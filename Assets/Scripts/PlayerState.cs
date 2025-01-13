@@ -13,5 +13,20 @@ public class PlayerState
         this.stateMachine = _stateMachine;
         this.animBoolName = _animBoolName;
     }
+
+    public virtual void Enter()
+    {
+
+    } 
+
+    public virtual void Update()
+    {
+
+    }
+
+    public virtual void Exit()
+    {
+        
+    }
     
 }
