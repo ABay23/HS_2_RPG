@@ -53,12 +53,12 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         stateMachine.currentState.Update();
-        FlipControl();
         
     }
     public void VelocityInput(float _xAxis, float _yAxis)
     {
         _rb.linearVelocity = new Vector2(_xAxis, _yAxis);
+        FlipControl(_xAxis);
     }
 
     public bool IsGroundDetected()=> Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistance, _whatIsGround);
@@ -76,11 +76,11 @@ public class Player : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    public void FlipControl()
+    public void FlipControl(float _x)
     {
-        if (_rb.linearVelocityX > 0 && !_facingRight)
+        if (_x > 0 && !_facingRight)
             Flip();
-        else if (_rb.linearVelocityX < 0 && _facingRight)
+        else if (_x < 0 && _facingRight)
             Flip();
         
     }
