@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public PlayerStateMachine stateMachine {get; private set;}
 
-    // Update is called once per frame
-    void Update()
+    public PlayerIdleState idleState {get; private set;}
+
+    public PlayerMoveState moveState {get; private set;}
+
+    private void Awake() 
     {
-        
+        stateMachine = new PlayerStateMachine();
     }
 }
