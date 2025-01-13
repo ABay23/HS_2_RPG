@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
 
     private void Start() 
     {
-        stateMachine.Initialize(idleState);
         _anim = GetComponentInChildren<Animator>();
+        stateMachine.Initialize(idleState);
     }
 
     private void Update() 
