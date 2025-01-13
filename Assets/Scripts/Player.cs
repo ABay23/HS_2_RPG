@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Move Info")]
+    public float _movementSpeed = 15f;
+
     #region Components
     public Animator _anim {get; private set;}
     public Rigidbody2D _rb {get; private set;}

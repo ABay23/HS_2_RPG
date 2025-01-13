@@ -27,6 +27,6 @@ public class PlayerMoveState : PlayerState
             stateMachine.ChangeState(player.idleState);
         }
 
-        player.VelocityInput(_xInput, player._rb.linearVelocityY);
+        player.VelocityInput(_xInput * (player._movementSpeed * Time.smoothDeltaTime), player._rb.linearVelocityY);
     }
 }
