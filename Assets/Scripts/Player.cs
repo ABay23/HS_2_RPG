@@ -11,5 +11,19 @@ public class Player : MonoBehaviour
     private void Awake() 
     {
         stateMachine = new PlayerStateMachine();
+
+        idleState = new PlayerIdleState(this, stateMachine, "Idle");
+        moveState = new PlayerMoveState(this, stateMachine, "Move");
+    }
+
+    private void Start() 
+    {
+        stateMachine.Initialize(idleState);
+    }
+
+    private void Update() 
+    {
+        stateMachine.currentState.Update();
+        
     }
 }

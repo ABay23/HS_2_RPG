@@ -16,17 +16,17 @@ public class PlayerState
 
     public virtual void Enter()
     {
-
+        Debug.Log("I Entered " + animBoolName);
     } 
 
     public virtual void Update()
     {
-
+        Debug.Log(" I updated " + animBoolName);
     }
 
     public virtual void Exit()
     {
-        
+        Debug.Log("I Exited " + animBoolName);
     }
     
 }

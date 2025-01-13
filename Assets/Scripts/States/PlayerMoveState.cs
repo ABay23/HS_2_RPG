@@ -21,6 +21,10 @@ public class PlayerMoveState : PlayerState
     public override void Update()
     {
         base.Update();
-        // Add code for updating the logic in the idle state
+        
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            player.stateMachine.ChangeState(player.idleState);
+        }
     }
 }
