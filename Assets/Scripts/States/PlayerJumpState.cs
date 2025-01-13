@@ -23,7 +23,6 @@ public class PlayerJumpState : PlayerState
             {
                 stateMachine.ChangeState(player.airState);
             }
-        Debug.Log(player._rb.linearVelocityY);
     }
 
     public override void Exit()
