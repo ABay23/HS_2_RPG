@@ -22,7 +22,7 @@ public class PlayerIdleState : PlayerState
     {
         base.Update();
         if (Input.GetKeyDown(KeyCode.N)){
-            player.stateMachine.ChangeState(player.moveState);
+            stateMachine.ChangeState(player.moveState);
         }
     }
 
