@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         _rb.linearVelocity = new Vector2(_xAxis, _yAxis);
     }
 
-    public bool isGroundDetected()=> Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistance, _whatIsGround);
+    public bool IsGroundDetected()=> Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistance, _whatIsGround);
 
     private void OnDrawGizmos() 
     {
