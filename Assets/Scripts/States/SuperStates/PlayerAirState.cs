@@ -14,10 +14,17 @@ public class PlayerAirState : PlayerState
     public override void Update()
     {
         base.Update();
+
+        if (player._rb.linearVelocityY == 0)
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
     }
 
     public override void Exit()
     {
         base.Exit();
+
+    
     }
 }

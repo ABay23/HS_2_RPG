@@ -9,16 +9,26 @@ public class PlayerJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        player._rb.linearVelocity = new Vector2(player._rb.linearVelocityX, 15f);
+        
     }
 
 
     public override void Update()
     {
         base.Update();
+
+        if (player._rb.linearVelocityY < 0)
+            {
+                stateMachine.ChangeState(player.airState);
+            }
+        Debug.Log(player._rb.linearVelocityY);
     }
 
     public override void Exit()
     {
         base.Exit();
+        
     }
 }
