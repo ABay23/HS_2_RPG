@@ -10,7 +10,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Enter();
 
-        player._rb.linearVelocity = new Vector2(player._rb.linearVelocityX, 15f);
+        player._rb.linearVelocity = new Vector2(player._rb.linearVelocityX, player._jumpForce);
         
     }
 

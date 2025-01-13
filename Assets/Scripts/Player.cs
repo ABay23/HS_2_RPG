@@ -4,6 +4,14 @@ public class Player : MonoBehaviour
 {
     [Header("Move Info")]
     public float _movementSpeed = 300f;
+    public float _jumpForce = 20f;
+
+    [Header("Collission Info")]
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private float _groundDistance;
+    [SerializeField] private Transform _wallCheck;
+    [SerializeField] private float _wallDistance;
+    [SerializeField] private LayerMask _whatIsGround;
 
     #region Components
     public Animator _anim {get; private set;}
@@ -47,5 +55,13 @@ public class Player : MonoBehaviour
     public void VelocityInput(float _xAxis, float _yAxis)
     {
         _rb.linearVelocity = new Vector2(_xAxis, _yAxis);
+    }
+
+    public bool isGroundDetected()=> Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistance, _whatIsGround);
+
+    private void OnDrawGizmos() 
+    {
+        Gizmos.DrawLine(_groundCheck.position, new Vector3(_groundCheck.position.x, _groundCheck.position.y - _groundDistance, 0) );
+        Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallDistance, _wallCheck.position.y));
     }
 }
