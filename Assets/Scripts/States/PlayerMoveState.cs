@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMoveState : PlayerState
+public class PlayerMoveState : PlayerGroundedState
 {
     public PlayerMoveState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -27,6 +27,6 @@ public class PlayerMoveState : PlayerState
             stateMachine.ChangeState(player.idleState);
         }
 
-        player.VelocityInput(_xInput * (player._movementSpeed * Time.smoothDeltaTime), player._rb.linearVelocityY);
+        player.VelocityInput(_xInput * (player._movementSpeed * Time.fixedDeltaTime), player._rb.linearVelocityY);
     }
 }

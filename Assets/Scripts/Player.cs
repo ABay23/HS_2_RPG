@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Move Info")]
-    public float _movementSpeed = 15f;
+    public float _movementSpeed = 300f;
 
     #region Components
     public Animator _anim {get; private set;}
