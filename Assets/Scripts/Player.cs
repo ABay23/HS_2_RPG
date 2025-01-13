@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     #region Components
     public Animator _anim {get; private set;}
+    public Rigidbody2D _rb {get; private set;}
     #endregion Components
     #region states
     public PlayerStateMachine stateMachine {get; private set;}
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
     private void Start() 
     {
         _anim = GetComponentInChildren<Animator>();
+        _rb = GetComponentInChildren<Rigidbody2D>();
+
         stateMachine.Initialize(idleState);
     }
 
@@ -31,5 +34,9 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.Update();
         
+    }
+    public void VelocityInput(float _xAxis, float _yAxis)
+    {
+        _rb.linearVelocity = new Vector2(_xAxis, _yAxis);
     }
 }

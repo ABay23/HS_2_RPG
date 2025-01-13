@@ -22,9 +22,11 @@ public class PlayerMoveState : PlayerState
     {
         base.Update();
         
-        if (Input.GetKeyDown(KeyCode.N))
+        if (_xInput == 0)
         {
             stateMachine.ChangeState(player.idleState);
         }
+
+        player.VelocityInput(_xInput, player._rb.linearVelocityY);
     }
 }
