@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _wallDistance;
     [SerializeField] private LayerMask _whatIsGround;
 
+    public int _facingDirection {get; private set;} = 1;
+    public bool _facingRight = true;
+
     #region Components
     public Animator _anim {get; private set;}
     public Rigidbody2D _rb {get; private set;}
@@ -50,6 +53,7 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         stateMachine.currentState.Update();
+        FlipControl();
         
     }
     public void VelocityInput(float _xAxis, float _yAxis)
@@ -63,5 +67,21 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawLine(_groundCheck.position, new Vector3(_groundCheck.position.x, _groundCheck.position.y - _groundDistance, 0) );
         Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallDistance, _wallCheck.position.y));
+    }
+
+    public void Flip()
+    {
+        _facingDirection *= -1;
+        _facingRight = !_facingRight;
+        transform.Rotate(0, 180, 0);
+    }
+
+    public void FlipControl()
+    {
+        if (_rb.linearVelocityX > 0 && !_facingRight)
+            Flip();
+        else if (_rb.linearVelocityX < 0 && _facingRight)
+            Flip();
+        
     }
 }
