@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float _movementSpeed = 300f;
     public float _jumpForce = 20f;
     [Header("Dash Stats")]
+    [SerializeField] public float _dashCooldown;
+    [SerializeField] public float _dashUsageTimer;
     public float _dashSpeed;
     public float _dashDuration;
     public float _dashFacing {get; private set;}
@@ -55,12 +57,14 @@ public class Player : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _rb = GetComponentInChildren<Rigidbody2D>();
 
+
         stateMachine.Initialize(idleState);
     }
 
     private void Update() 
     {
         stateMachine.currentState.Update();
+
         DashCheckInput();
         
     }
@@ -80,7 +84,9 @@ public class Player : MonoBehaviour
 
     public void DashCheckInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        _dashUsageTimer -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _dashUsageTimer < 0)
         {
             _dashFacing = Input.GetAxisRaw("Horizontal");
 
@@ -89,6 +95,8 @@ public class Player : MonoBehaviour
                 _dashFacing = _facingDirection;
             }
             
+            _dashUsageTimer = _dashCooldown; 
+
             stateMachine.ChangeState(dashState);
         }
     }

@@ -170,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 300
   _jumpForce: 20
+  _dashCooldown: 1.5
+  _dashUsageTimer: 0
   _dashSpeed: 500
   _dashDuration: 0.7
   _groundCheck: {fileID: 1028288875}
