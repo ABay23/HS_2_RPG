@@ -14,6 +14,19 @@ public class PlayerWallSlideState : PlayerState
     public override void Update()
     {
         base.Update();
+        
+        if (!player.IsWallDetected() && !player.IsGroundDetected())
+        {
+            stateMachine.ChangeState(player.airState);
+        } else if (!player.IsWallDetected() && player.IsGroundDetected() )
+        {
+            stateMachine.ChangeState(player.idleState);
+        } 
+
+        if (player.IsWallDetected() && player.IsGroundDetected())
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
     }
 
     public override void Exit()

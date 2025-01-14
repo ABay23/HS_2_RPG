@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
     }
 
     public bool IsGroundDetected()=> Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistance, _whatIsGround);
+    public bool IsWallDetected()=> Physics2D.Raycast(_wallCheck.position, Vector2.right * _facingDirection, _wallDistance, _whatIsGround);
 
     private void OnDrawGizmos() 
     {

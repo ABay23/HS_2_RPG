@@ -24,6 +24,11 @@ public class PlayerAirState : PlayerState
         {
             player.VelocityInput(player._movementSpeed * 0.8f * (_xInput * Time.fixedDeltaTime), player._rb.linearVelocityY);
         }
+
+        if (player.IsWallDetected())
+        {
+            stateMachine.ChangeState(player.wallSlideState);
+        }
     }
 
     public override void Exit()
