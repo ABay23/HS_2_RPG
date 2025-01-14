@@ -28,6 +28,7 @@ public class PlayerState
         player._anim.SetFloat("YVelocity", player._rb.linearVelocityY);
         
         _stateTimer -= Time.deltaTime;
+        Debug.Log(_stateTimer);
     }
 
     public virtual void Exit()

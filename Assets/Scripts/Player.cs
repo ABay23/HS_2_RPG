@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float _movementSpeed = 300f;
     public float _jumpForce = 20f;
+    [Header("Dash Stats")]
     public float _dashSpeed;
     public float _dashDuration;
+    public float _dashFacing {get; private set;}
 
     [Header("Collission Info")]
     [SerializeField] private Transform _groundCheck;
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         stateMachine.currentState.Update();
+        DashCheckInput();
         
     }
     public void VelocityInput(float _xAxis, float _yAxis)
@@ -73,6 +76,21 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawLine(_groundCheck.position, new Vector3(_groundCheck.position.x, _groundCheck.position.y - _groundDistance, 0) );
         Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallDistance, _wallCheck.position.y));
+    }
+
+    public void DashCheckInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _dashFacing = Input.GetAxisRaw("Horizontal");
+
+            if (_dashFacing == 0)
+            {
+                _dashFacing = _facingDirection;
+            }
+            
+            stateMachine.ChangeState(dashState);
+        }
     }
 
     public void Flip()

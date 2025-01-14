@@ -22,7 +22,7 @@ public class PlayerDashState : PlayerState
     {
         base.Update();
 
-        player.VelocityInput(player._dashSpeed * player._facingDirection * Time.fixedDeltaTime, player._rb.linearVelocityY);
+        player.VelocityInput(player._dashSpeed * player._facingDirection * Time.fixedDeltaTime, 0);
 
         if (_stateTimer < 0)
         {
