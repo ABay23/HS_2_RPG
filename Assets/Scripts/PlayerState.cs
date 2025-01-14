@@ -5,6 +5,7 @@ public class PlayerState
 {
     protected PlayerStateMachine stateMachine;
     protected Player player;
+    protected float _stateTimer;
 
     protected float _xInput;
     protected string animBoolName;
@@ -25,6 +26,8 @@ public class PlayerState
     {
         _xInput = Input.GetAxisRaw("Horizontal");
         player._anim.SetFloat("YVelocity", player._rb.linearVelocityY);
+        
+        _stateTimer -= Time.deltaTime;
     }
 
     public virtual void Exit()
