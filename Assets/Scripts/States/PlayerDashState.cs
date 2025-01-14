@@ -9,17 +9,20 @@ public class PlayerDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        _stateTimer += 2f;
+        _stateTimer = player._dashDuration;
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.VelocityInput(0, player._rb.linearVelocityY);
     }
 
     public override void Update()
     {
         base.Update();
+
+        player.VelocityInput(player._dashSpeed * player._facingDirection * Time.fixedDeltaTime, player._rb.linearVelocityY);
 
         if (_stateTimer < 0)
         {

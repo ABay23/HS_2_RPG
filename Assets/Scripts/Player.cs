@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float _movementSpeed = 300f;
     public float _jumpForce = 20f;
+    public float _dashSpeed;
+    public float _dashDuration;
 
     [Header("Collission Info")]
     [SerializeField] private Transform _groundCheck;
