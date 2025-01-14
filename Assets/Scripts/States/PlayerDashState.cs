@@ -23,7 +23,7 @@ public class PlayerDashState : PlayerState
 
         if (_stateTimer < 0)
         {
-            
+            stateMachine.ChangeState(player.idleState);
         }
     }
 

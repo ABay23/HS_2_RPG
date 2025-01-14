@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     public PlayerJumpState jumpState {get; private set;}
 
     public PlayerAirState airState {get; private set;}
+
+    public PlayerDashState dashState {get; private set;}
     #endregion states
 
     private void Awake() 
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "Move");
         jumpState = new PlayerJumpState(this, stateMachine, "Jump");
         airState  = new PlayerAirState(this, stateMachine, "Jump");
+        dashState = new PlayerDashState(this, stateMachine, "Dash");
     }
 
     private void Start() 
