@@ -6,6 +6,7 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected Player player;
     protected float _stateTimer;
+    protected bool _animationTriggered;
 
     protected float _xInput;
     protected string animBoolName;
@@ -20,6 +21,7 @@ public class PlayerState
     public virtual void Enter()
     {
         player._anim.SetBool(animBoolName, true);
+        _animationTriggered = false;
     } 
 
     public virtual void Update()
@@ -33,6 +35,11 @@ public class PlayerState
     public virtual void Exit()
     {
         player._anim.SetBool(animBoolName, false);
+    }
+
+    public virtual void AnimationTriggerChecked()
+    {
+        _animationTriggered = true;
     }
     
 }
