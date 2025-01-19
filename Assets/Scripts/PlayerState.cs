@@ -37,7 +37,7 @@ public class PlayerState
         player._anim.SetBool(animBoolName, false);
     }
 
-    public virtual void AnimationTriggerChecked()
+    public virtual void AnimationFinishedTrigger()
     {
         _animationTriggered = true;
     }

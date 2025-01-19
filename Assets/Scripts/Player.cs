@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -73,8 +74,10 @@ public class Player : MonoBehaviour
         stateMachine.currentState.Update();
 
         DashCheckInput();
-        
     }
+
+    public  void AnimationTriggered()=> stateMachine.currentState.AnimationFinishedTrigger();
+
     public void VelocityInput(float _xAxis, float _yAxis)
     {
         _rb.linearVelocity = new Vector2(_xAxis, _yAxis);
