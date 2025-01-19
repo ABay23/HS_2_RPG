@@ -15,7 +15,8 @@ public class PlayerAttackState : PlayerState
     {
         base.Update();
 
-    
+        if (_animationTriggered)
+            stateMachine.ChangeState(player.idleState);
     }
 
     public override void Exit()
