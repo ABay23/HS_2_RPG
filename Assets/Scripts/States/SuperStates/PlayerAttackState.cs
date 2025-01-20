@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerState
@@ -27,6 +28,9 @@ public class PlayerAttackState : PlayerState
 
         if (_animationTriggered)
             stateMachine.ChangeState(player.idleState);
+
+        if (_stateTimer > 0)
+            player._rb.linearVelocity = new Vector2(0, 0);
     }
 
     public override void Exit()
