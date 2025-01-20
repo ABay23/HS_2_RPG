@@ -14,7 +14,7 @@ public class PlayerAttackState : PlayerState
     {
         base.Enter();
 
-        if (_comboCounter > 2)
+        if (_comboCounter > 2 || Time.time >= _lastTimeAttacked + _comboCounter)
             _comboCounter = 0;
         Debug.Log(_comboCounter);
     }
