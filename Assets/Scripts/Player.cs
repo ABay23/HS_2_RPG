@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         DashCheckInput();
     }
 
-    public  void AnimationTriggered()=> stateMachine.currentState.AnimationFinishedTrigger();
+    public void AnimationTriggered()=> stateMachine.currentState.AnimationFinishedTrigger();
 
     public void VelocityInput(float _xAxis, float _yAxis)
     {
