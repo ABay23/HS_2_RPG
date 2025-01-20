@@ -16,7 +16,8 @@ public class PlayerAttackState : PlayerState
 
         if (_comboCounter > 2 || Time.time >= _lastTimeAttacked + _comboCounter)
             _comboCounter = 0;
-        Debug.Log(_comboCounter);
+
+        player._anim.SetInteger("ComboA", _comboCounter);
     }
 
 
