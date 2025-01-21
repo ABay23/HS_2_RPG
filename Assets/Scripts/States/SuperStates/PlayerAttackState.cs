@@ -9,7 +9,7 @@ public class PlayerAttackState : PlayerState
 
     private int _comboCounter;
     private float _lastTimeAttacked;
-    private float _comboWindow = 2f;
+    // private float _comboWindow = 2f;
 
     public override void Enter()
     {
